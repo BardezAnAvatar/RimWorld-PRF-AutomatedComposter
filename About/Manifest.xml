@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Manifest>
+    <identifier>bardez.automated.composter</identifier>
+    <version>1.3.0.0</version>
+    <dependencies>
+        <li>spdskatr.projectrimfactory</li>
+        <li>jamaicancastle.RF.fertilefields</li>
+    </dependencies>
+    <showCrossPromotions>true</showCrossPromotions>
+</Manifest>
