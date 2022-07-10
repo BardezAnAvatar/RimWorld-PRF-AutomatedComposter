@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <!-- 
+    Note on workAmount:
+    Work amount is 60 ticks or work per 1 in-game second. Per Wiki, 1 day is 1000 seconds.
+    Autoclave requires 12 in-game hours to run, so ... (500 seconds * 60) work, no?
+    https://rimworldwiki.com/wiki/Work_To_Make
+   -->
+
+  <RecipeDef>
+    <defName>Autocomposter_Fertilizer</defName>
+    <label>Enrich Compost</label>
+    <description>Further process compost into fertilizer</description>
+    <jobString>Curing</jobString>
+    <effectWorking>Cook</effectWorking>
+    <workSkill>Cooking</workSkill>
+    <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+    <requiredGiverWorkType>Cooking</requiredGiverWorkType>
+    <workAmount>3000</workAmount>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>RawCompost</li>
+          </thingDefs>
+        </filter>
+        <count>150</count>
+      </li>
+    </ingredients>
+    <products>
+		<Fertilizer>150</Fertilizer>
+    </products>
+    <recipeUsers>
+      <li>PRFAutocomposter</li>
+    </recipeUsers>
+  </RecipeDef>
+
+</Defs>
