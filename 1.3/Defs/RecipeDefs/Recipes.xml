@@ -16,7 +16,7 @@
 		<workSkill>Cooking</workSkill>
 		<workSpeedStat>GeneralLaborSpeed</workSpeedStat>
 		<requiredGiverWorkType>Cooking</requiredGiverWorkType>
-		<workAmount>3000</workAmount>
+		<workAmount>180000</workAmount>
 		<ingredients>
 			<li>
 				<filter>
