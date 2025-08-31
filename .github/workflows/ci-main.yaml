@@ -51,7 +51,7 @@ jobs:
       semver_skipped: '${{ steps.semver.outputs.skipped }}'
       semver_release-notes: '${{ steps.semver.outputs.release-notes }}'
 
-  InfinityAutoPackager:
+  PackageMod:
     name: Publish Mod
     runs-on: ubuntu-latest
     permissions: write-all
