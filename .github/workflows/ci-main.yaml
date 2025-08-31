@@ -81,11 +81,9 @@ jobs:
         with:
           submodules: true
 
-      - name: Create Infinity Engine Mod Packages (.iemod and .zip)
-        uses: ALIENQuake/CreateIEModZipPackage@master
-        id: CreateIEModZipPackage
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      #zip the XML-only mod
+      - name: Zip folder
+          run: zip -r release_${{ needs.bump-tag-version.outputs.version }}.zip src
 
       - name: Create Release
         id: create_release
@@ -96,20 +94,11 @@ jobs:
           tag: ${{ needs.bump-tag-version.outputs.semver_next }}
           name: Release ${{ needs.bump-tag-version.outputs.semver_next }}
 
-      - name: Upload iemod package to latest release
-        uses: svenstaro/upload-release-action@2.9.0
-        with:
-          repo_token: ${{ secrets.GITHUB_TOKEN }}
-          file: ${{ steps.CreateIEModZipPackage.outputs.PackageBaseName }}.iemod
-          asset_name: ${{ steps.CreateIEModZipPackage.outputs.PackageBaseName }}.iemod
-          tag: ${{ github.ref }}
-          overwrite: true
-
       - name: Upload zip package to latest release
         uses: svenstaro/upload-release-action@2.9.0
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
-          file: ${{ steps.CreateIEModZipPackage.outputs.PackageBaseName }}.zip
-          asset_name: ${{ steps.CreateIEModZipPackage.outputs.PackageBaseName }}.zip
+          file: release_${{ needs.bump-tag-version.outputs.version }}.zip
+          asset_name: release_${{ needs.bump-tag-version.outputs.version }}.zip
           tag: ${{ github.ref }}
           overwrite: true
