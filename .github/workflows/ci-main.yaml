@@ -83,7 +83,7 @@ jobs:
 
       #zip the XML-only mod
       - name: Zip folder
-          run: zip -r release_${{ needs.bump-tag-version.outputs.version }}.zip src
+        run: zip -r release_${{ needs.bump-tag-version.outputs.version }}.zip src
 
       - name: Create Release
         id: create_release

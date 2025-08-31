@@ -54,12 +54,10 @@ jobs:
     runs-on: ubuntu-latest
     if: ${{ needs.check-pr.outputs.semver_skipped == 'false' }} && (github.actor == 'dependabot[bot]' || github.actor == 'BardezAnAvatar')
     steps:
-
       - name: Checkout
         uses: actions/checkout@v4
-        
       - name: Zip folder
-          run: zip -r release_${{ needs.bump-tag-version.outputs.version }}.zip src
+        run: zip -r release_${{ needs.bump-tag-version.outputs.version }}.zip src
 
   auto-approval:
     name: Pull Request Auto-Approval
