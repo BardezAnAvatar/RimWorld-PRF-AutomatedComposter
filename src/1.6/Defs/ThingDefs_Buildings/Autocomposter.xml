@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+	<ThingDef ParentName="PRF_AssemblerBase">
+		<defName>PRFAutocomposter</defName>
+		<label>Automated Composter</label>
+		<description>An automated machine that processes compost into fertilizer</description>
+		<thingClass>ProjectRimFactory.SAL3.Things.Assemblers.Building_SimpleAssembler</thingClass>
+		<graphicData>
+			<texPath>auto-composter</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>(3,3)</drawSize>
+		</graphicData>
+		<category>Building</category>
+		<tickerType>Normal</tickerType>
+		<canOverlapZones>false</canOverlapZones>
+		<altitudeLayer>Building</altitudeLayer>
+		<passability>PassThroughOnly</passability>
+		<blockWind>false</blockWind>
+		<castEdgeShadows>false</castEdgeShadows>
+		<pathCost>60</pathCost>
+		<size>(2,2)</size>
+		<inspectorTabs>
+			<li>ProjectRimFactory.Common.ITab_PowerSupply</li>
+			<!-- Power boost -->
+		</inspectorTabs>
+		<statBases>
+			<WorkToBuild>18000</WorkToBuild>
+			<Mass>100</Mass>
+			<MaxHitPoints>100</MaxHitPoints>
+			<Flammability>.2</Flammability>
+			<Beauty>-20</Beauty>
+			<SellPriceFactor>0.70</SellPriceFactor>
+		</statBases>
+		<costList>
+			<PRF_RoboticArm>2</PRF_RoboticArm>
+			<PRF_ElectronicChip_I>4</PRF_ElectronicChip_I>
+			<PRF_MachineFrame_III>1</PRF_MachineFrame_III>
+			<Plasteel>50</Plasteel>
+			<Steel>150</Steel>
+			<ComponentIndustrial>4</ComponentIndustrial>
+			<ComponentSpacer>1</ComponentSpacer>
+		</costList>
+		<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+		<comps>
+			<li Class="CompProperties_Breakdownable"/>
+			<!-- enable breakdown of machines -->
+			<li Class="CompProperties_Power">
+				<!-- consume power -->
+				<compClass>CompPowerTrader</compClass>
+				<basePowerConsumption>800</basePowerConsumption>
+			</li>
+			<li Class="CompProperties_HeatPusher">
+				<!-- Produce fixed amount of heat while on -->
+				<compClass>CompHeatPusherPowered</compClass>
+				<heatPerSecond>2</heatPerSecond>
+				<!-- Vanilla stove create 5 -->
+			</li>
+			<li Class="ProjectRimFactory.Common.CompProperties_CompOutputAdjustable">
+				<!-- toggle the output tile -->
+				<SupportDiagonal>true</SupportDiagonal>
+			</li>
+			<li Class="ProjectRimFactory.Common.CompProperties_PowerWorkSetting">
+				<!-- Speed Settings -->
+				<floatrange_SpeedFactor>1~4</floatrange_SpeedFactor>
+				<powerPerStepSpeed>1000</powerPerStepSpeed>
+				<powerStepFactor>1</powerStepFactor>
+				<!-- Range Settings -->
+				<floatrange_Range>1~3</floatrange_Range>
+				<powerPerStepRange>125</powerPerStepRange>
+				<allowManualRangeTypeChange>true</allowManualRangeTypeChange>
+				<rangeType>ProjectRimFactory.Common.RectRange</rangeType>
+			</li>
+		</comps>
+		<recipes>
+			<li>Autocomposter_Fertilizer</li>
+		</recipes>
+		<rotatable>False</rotatable>
+		<designationCategory>RFF_Farm</designationCategory>
+		<building>
+			<ai_chillDestination>false</ai_chillDestination>
+		</building>
+		<researchPrerequisites>
+			<li>PRF_MachineLearning</li>
+		</researchPrerequisites>
+		<constructionSkillPrerequisite>12</constructionSkillPrerequisite>
+		<modExtensions>
+			<li Class="ProjectRimFactory.SAL3.Exposables.AssemblerDefModExtension">
+				<drawStatus>true</drawStatus>
+				<doEffect>false</doEffect>
+			</li>
+			<li Class="ProjectRimFactory.Common.ModExtension_Skills">
+				<SkillUsage>ThisOverrides</SkillUsage>
+				<BaseSkill>10</BaseSkill>
+				<skills>
+					<li>
+						<def>Cooking</def>
+						<levelInt>10</levelInt>
+					</li>
+				</skills>
+			</li>
+		</modExtensions>
+		<staticSunShadowHeight>1</staticSunShadowHeight>
+	</ThingDef>
+
+</Defs>
