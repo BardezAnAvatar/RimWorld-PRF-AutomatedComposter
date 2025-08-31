@@ -57,12 +57,9 @@ jobs:
 
       - name: Checkout
         uses: actions/checkout@v4
-
-      - name: Create Infinity Engine Mod Packages (.iemod and .zip)
-        uses: ALIENQuake/CreateIEModZipPackage@master
-        id: CreateIEModZipPackage
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        
+      - name: Zip folder
+          run: zip -r release_${{ needs.bump-tag-version.outputs.version }}.zip src
 
   auto-approval:
     name: Pull Request Auto-Approval
