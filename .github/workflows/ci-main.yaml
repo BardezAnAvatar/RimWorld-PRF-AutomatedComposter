@@ -59,7 +59,7 @@ jobs:
     if: needs.bump-tag-version.outputs.semver_skipped == 'false'
     steps:
 
-      - name: Debug the Output another way
+      - name: Debug the Output
         run: |
           echo "semver_old            - ${{ needs.bump-tag-version.outputs.semver_old }}"
           echo "semver_next           - ${{ needs.bump-tag-version.outputs.semver_next }}"
