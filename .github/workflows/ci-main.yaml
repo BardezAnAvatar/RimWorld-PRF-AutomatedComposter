@@ -96,5 +96,5 @@ jobs:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           file: release_${{ needs.bump-tag-version.outputs.semver_next }}.zip
           asset_name: release_${{ needs.bump-tag-version.outputs.semver_next }}.zip
-          tag: ${{ github.ref }}
+          tag: ${{ needs.bump-tag-version.outputs.semver_next }}
           overwrite: true
