@@ -91,7 +91,7 @@ jobs:
           name: Release ${{ needs.bump-tag-version.outputs.semver_next }}
 
       - name: Upload zip package to latest release
-        uses: svenstaro/upload-release-action@2.9.0
+        uses: svenstaro/upload-release-action@2.11.3
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           file: release_${{ needs.bump-tag-version.outputs.semver_next }}.zip
